@@ -1,4 +1,7 @@
 spring:
+  output:
+    ansi:
+      enabled: always
   datasource:
     url: jdbc:postgresql://localhost/postgres
     username: postgres
@@ -12,3 +15,6 @@ spring:
       hibernate:
         dialect: org.hibernate.dialect.PostgreSQLDialect
         format_sql: true
+
+logging:
+  config: src/main/resources/logback-prod.xml
