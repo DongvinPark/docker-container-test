@@ -28,6 +28,6 @@ cloud:
     region:
       static: ap-northeast-2
     s3:
-      bucket: app-develop-media
+      bucket: dongvin-log-archive
     stack:
       auto: false
