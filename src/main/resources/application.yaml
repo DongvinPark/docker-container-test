@@ -18,3 +18,16 @@ spring:
 
 logging:
   config: src/main/resources/logback-prod.xml
+
+#aws cloud
+cloud:
+  aws:
+    credentials:
+      accessKey:
+      secretKey:
+    region:
+      static: ap-northeast-2
+    s3:
+      bucket: app-develop-media
+    stack:
+      auto: false
