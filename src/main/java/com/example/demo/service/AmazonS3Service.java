@@ -27,8 +27,9 @@ public class AmazonS3Service {
 
     try {
 
-      // 로그 파일을 찾아야 한다. 여러 개의 로그 파일중 일단 1개의 파일만 찾아보자.
-      // 로그 파일을 찾는 로직은 지금과 같은 테스트 환경이 아니라 실제 배포 환경에서 구현한다.
+      // 로그 파일을 찾아야 한다. 여러 개의 로그 파일중 일단 1개의 파일만 찾아본다.
+      // 이미 s3에 기록된 로그 파일은 삭제해서 파일의 종복을 막는 방버도 있고,
+      // aws cloud watch의 내용을 바로 s3에 전달하는 기능도 aws에서 제공한다고 한다.
       List<String> lines = Files.readAllLines(Paths.get("./vr3_logs/vr3.log"));
       StringBuilder sb = new StringBuilder();
       for(String line : lines){
@@ -37,7 +38,7 @@ public class AmazonS3Service {
       }
 
       amazonS3Client.putObject(
-          bucketName, "test-log-file", sb.toString()
+          bucketName, "test-log-file.log", sb.toString()
       );
     } catch (Exception e) {
       log.error("### uploadLogFile : exception occurred while uploading log file.");
